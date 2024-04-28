@@ -1,0 +1,26 @@
+@import "./styles/Variables.scss";
+
+.app {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+}
+
+.app_canvas {
+  width: calc(100vw - $settings_width);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: gray;
+  canvas {
+    background-color: white;
+  }
+}
+
+.app_settings {
+  width: $settings_width;
+  height: 100%;
+}

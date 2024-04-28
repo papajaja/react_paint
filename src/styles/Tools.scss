@@ -1,0 +1,54 @@
+@import "./Variables.scss";
+
+.brush {
+  background: url("../images/brush.svg");
+}
+
+.circle {
+  background: url("../images/circle.svg");
+}
+
+.eraser {
+  background: url("../images/eraser.svg");
+}
+
+.line {
+  background: url("../images/line.svg");
+}
+
+.rect {
+  background: url("../images/rect.svg");
+}
+
+.shapes {
+  background: url("../images/shapes.svg");
+}
+
+.undo {
+  background: url("../images/undo.svg");
+}
+
+.redo {
+  background: url("../images/redo.svg");
+}
+
+.clean {
+  background: url("../images/clean.svg");
+}
+
+.settings {
+  background: url("../images/settings.svg");
+}
+
+.tool {
+  width: 40px;
+  height: 40px;
+  background-size: $tool_size;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 192, 203, 0.6);
+  background-position: center center;
+  &:hover {
+    cursor: pointer;
+    background-color: pink;
+  }
+}

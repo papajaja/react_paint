@@ -1,0 +1,50 @@
+@import "../../styles/Variables.scss";
+
+.counter {
+  width: 100%;
+  height: $counter_height;
+  display: flex;
+  color: $font_color;
+  padding: 0 $counter_padding 0 $counter_padding;
+}
+
+.counter_text {
+  width: $counter_text_width;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: $font_size;
+}
+
+.counter_controls {
+  width: calc($settings_width - $counter_text_width - $counter_padding);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.counter_increase,
+.counter_decrease {
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: $font_color;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.counter_value {
+  width: calc($settings_width - $counter_text_width - 40px - $counter_padding);
+  height: 100%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,74 @@
+@import "../../styles/Variables.scss";
+
+.color {
+  .react-colorful {
+    height: 100%;
+    width: 100%;
+  }
+
+  .react-colorful__saturation {
+    border-radius: 0;
+  }
+
+  .react-colorful__hue {
+    height: 14px;
+  }
+
+  .react-colorful__alpha {
+    border-radius: 0;
+    height: 14px;
+  }
+
+  .react-colorful__saturation-pointer {
+    width: 10px;
+    height: 10px;
+  }
+
+  .react-colorful__hue-pointer {
+    width: 2px;
+    border: 1px solid white;
+    height: 100%;
+  }
+
+  .react-colorful__alpha-pointer {
+    width: 2px;
+    border: 1px solid white;
+    height: 100%;
+  }
+}
+
+.color_menu {
+  width: 100%;
+  height: $counter_height;
+  padding: 0 $color_padding 0 $color_padding;
+  display: flex;
+  align-items: center;
+  color: $font_color;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.color_text {
+  width: calc(100% - $counter_height - $counter_padding * 2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: $font_size;
+}
+
+.color_dir {
+  width: $color_arrow_size;
+  height: $color_arrow_size;
+  background-color: aquamarine;
+}
+
+.color_picker {
+  padding: 10px;
+  width: 100%;
+  height: 150px;
+  // background-color: violet;
+  // border: 1px solid white;
+}

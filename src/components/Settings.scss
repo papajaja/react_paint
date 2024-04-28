@@ -1,0 +1,41 @@
+@import "../styles/Variables.scss";
+
+.settings {
+  position: relative;
+}
+
+.settings_toolbar {
+  height: $toolbar_height;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bar {
+  height: calc(100vh - $toolbar_height);
+  width: 100%;
+  display: flex;
+}
+
+.settings_properties {
+  padding-top: $properties_gap;
+  height: calc(100vh - $toolbar_height);
+  overflow: hidden;
+  width: 100%;
+  background-color: green;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  .simplebar-scrollbar {
+    &:before {
+      margin-left: 4px;
+      width: 3px;
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  .simplebar-visible {
+    &:before {
+      opacity: 0.8 !important;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/Variables.scss";
+
+.checkbox {
+  width: 100%;
+  height: $checkbox_height;
+  color: $font_color;
+  display: flex;
+  align-items: center;
+  padding: 0 $checkbox_padding * 2 0 $checkbox_padding;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.checkbox_text {
+  height: 100%;
+  font-size: $font_size;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.checkbox_checker {
+  width: $checkbox_box_size;
+  height: $checkbox_box_size;
+  min-width: $checkbox_box_size;
+  border-radius: 4px;
+  // outline: 1px solid white;
+  box-shadow: 0 0 1px 1px white;
+}
