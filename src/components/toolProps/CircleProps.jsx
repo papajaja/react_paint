@@ -11,6 +11,11 @@ const CircleProps = () => {
         value={ToolState.circleProps.isFill}
         setValue={(v) => ToolState.setCircleProps("isFill", v)}
       />
+      <Checkbox
+        text={"Спам - режим"}
+        value={ToolState.circleProps.isSpam}
+        setValue={(v) => ToolState.setCircleProps("isSpam", v)}
+      />
       <Color
         value={ToolState.circleProps.fillStyle}
         setValue={(v) => ToolState.setCircleProps("fillStyle", v)}

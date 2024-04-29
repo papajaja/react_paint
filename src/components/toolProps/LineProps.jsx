@@ -6,6 +6,11 @@ import Counter from "../ui/Counter";
 const LineProps = () => {
   return (
     <>
+      <Checkbox
+        text={"Спам - режим"}
+        value={ToolState.lineProps.isSpam}
+        setValue={(v) => ToolState.setLineProps("isSpam", v)}
+      />
       <Counter
         text={"Толщина обводки"}
         value={ToolState.lineProps.lineWidth}

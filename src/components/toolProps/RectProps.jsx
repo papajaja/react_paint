@@ -7,6 +7,11 @@ const RectProps = () => {
   return (
     <>
       <Checkbox
+        text={"Спам - режим"}
+        value={ToolState.rectProps.isSpam}
+        setValue={(v) => ToolState.setRectProps("isSpam", v)}
+      />
+      <Checkbox
         text={"Заливка"}
         value={ToolState.rectProps.isFill}
         setValue={(v) => ToolState.setRectProps("isFill", v)}

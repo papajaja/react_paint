@@ -34,6 +34,7 @@ class Circle extends Tool {
     ctx.strokeStyle = props.strokeStyle;
     this.isFill = props.isFill;
     this.isStroke = props.isStroke;
+    this.isSpam = props.isSpam;
   }
 
   mouseDown(e) {
@@ -57,9 +58,12 @@ class Circle extends Tool {
 
       const x = e.clientX - e.target.offsetLeft;
       const y = e.clientY - e.target.offsetTop;
-      const radius = Math.abs(this.startX - x);
+      const r1 = Math.abs(this.startX - x);
+      const r2 = Math.abs(this.startY - y);
+      const radius = Math.abs(Math.sqrt(r1 * r1 + r2 * r2));
+      // const radius = Math.max(r1, r2, r3);
 
-      ctx.putImageData(this.img, 0, 0);
+      if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
       ctx.beginPath();
       ctx.arc(this.startX, this.startY, radius, 0, Math.PI * 1.9);
       if (this.isFill) ctx.fill();

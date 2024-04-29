@@ -25,6 +25,7 @@ class ToolState_c {
     strokeStyle: "#000000",
     isFill: false,
     isStroke: true,
+    isSpam: false,
   };
 
   eraserProps = JSON.parse(localStorage.getItem("eraserProps")) || {
@@ -49,6 +50,7 @@ class ToolState_c {
     strokeStyle: "#000000",
     isFill: false,
     isStroke: true,
+    isSpam: false,
   };
 
   rectProps = JSON.parse(localStorage.getItem("rectProps")) || {
@@ -61,8 +63,9 @@ class ToolState_c {
     strokeStyle: "#000000",
     isFill: false,
     isStroke: true,
+    isSpam: false,
   };
-
+  setLineProps
   shapes = [{}];
 
   constructor() {

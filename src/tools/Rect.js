@@ -34,6 +34,7 @@ class Rect extends Tool {
     ctx.strokeStyle = props.strokeStyle;
     this.isFill = props.isFill;
     this.isStroke = props.isStroke;
+    this.isSpam = props.isSpam;
   }
 
   mouseDown(e) {
@@ -58,7 +59,7 @@ class Rect extends Tool {
       const x = e.clientX - e.target.offsetLeft;
       const y = e.clientY - e.target.offsetTop;
 
-      ctx.putImageData(this.img, 0, 0);
+      if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
       ctx.beginPath();
       ctx.rect(this.startX, this.startY, x - this.startX, y - this.startY);
       if (this.isFill) ctx.fill();

@@ -8,7 +8,7 @@ const Color = ({ text, value, setValue }) => {
     <div className="color">
       <div onClick={() => setActive((i) => !i)} className="color_menu">
         <div className="color_text">{text}</div>
-        <span className={"color_dir " + (isActive ? "down" : "right")} />
+        <span style={{ rotate: isActive ? "90deg" : "0deg" }} className={"color_dir"} />
       </div>
       {isActive && (
         <div className="color_picker">

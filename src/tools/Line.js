@@ -29,6 +29,7 @@ class Line extends Tool {
     ctx.shadowBlur = props.shadowBlur;
     ctx.shadowColor = props.shadowColor;
     ctx.strokeStyle = props.strokeStyle;
+    this.isSpam = props.isSpam;
   }
 
   mouseDown(e) {
@@ -53,7 +54,7 @@ class Line extends Tool {
       const x = e.clientX - e.target.offsetLeft;
       const y = e.clientY - e.target.offsetTop;
 
-      ctx.putImageData(this.img, 0, 0);
+      if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
       ctx.beginPath();
       ctx.moveTo(this.startX, this.startY);
       ctx.lineTo(x, y);

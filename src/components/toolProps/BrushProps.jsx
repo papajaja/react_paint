@@ -2,6 +2,7 @@ import ToolState from "../../store/ToolsState";
 import Checkbox from "../ui/Checkbox";
 import Color from "../ui/Color";
 import Counter from "../ui/Counter";
+import DoubleRange from "../ui/DoubleRange";
 
 const BrushProps = () => {
   return (
@@ -26,7 +27,7 @@ const BrushProps = () => {
         value={ToolState.brushProps.shadowColor}
         setValue={(v) => ToolState.setBrushProps("shadowColor", v)}
         text={"Цвет тени"}
-      />{" "}
+      />
     </>
   );
 };

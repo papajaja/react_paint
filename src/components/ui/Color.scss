@@ -62,13 +62,13 @@
 .color_dir {
   width: $color_arrow_size;
   height: $color_arrow_size;
-  background-color: aquamarine;
+  transition: rotate 0.3s;
+  background: url("../../images/right.svg") center center no-repeat;
+  background-size: 100%;
 }
 
 .color_picker {
-  padding: 10px;
+  padding: 3px 10px 10px 10px;
   width: 100%;
   height: 150px;
-  // background-color: violet;
-  // border: 1px solid white;
 }
