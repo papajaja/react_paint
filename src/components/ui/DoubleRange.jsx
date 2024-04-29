@@ -1,28 +1,48 @@
 import { useRef, useState } from "react";
 
-const DoubleRange = ({ text, min, max }) => {
+const DoubleRange = ({ text }) => {
   const leftThumb = useRef();
   const rightThumb = useRef();
   const track = useRef();
-  const maxShift = 190;
+  const thumbSize = 0;
+
+  const trackWidth = track.current?.getBoundingClientRect().width;
+  const onePercent = trackWidth / 100;
+  const onePx = 100 / trackWidth;
+
+  const setPercentage = (thumb, percentage) => {
+    console.log(percentage);
+    const leftShift = percentage * onePercent;
+
+    if (thumb === "left") {
+      leftThumb.current.style.left = leftShift + "px";
+    } else {
+      rightThumb.current.style.left = leftShift + "px";
+    }
+  };
 
   const handleMove = (e) => {
     const offsetLeft = track.current.getBoundingClientRect().x;
     const trackWidth = track.current.getBoundingClientRect().width;
+
+    const leftThumb_shift = leftThumb.current.offsetLeft;
+    const rightThumb_shift = rightThumb.current.offsetLeft;
+    console.log(leftThumb_shift, rightThumb_shift);
+
     if (leftThumb.current.classList.contains("thumb_active")) {
       let leftShift = e.clientX - offsetLeft;
-      if (leftShift >= rightThumb.current.style.left) leftShift = rightThumb.current.style.left - 1;
-      console.log(leftShift, rightThumb.current.style.left);
+
+      if (leftShift > rightThumb_shift) leftShift = rightThumb_shift;
       if (leftShift < 0) leftShift = 0;
-      console.log(leftShift);
-      if (leftShift > trackWidth) leftShift = trackWidth;
-      leftThumb.current.style.left = leftShift + "px";
-    } else {
+
+      setPercentage("left", onePx * leftShift);
+    } else if (rightThumb.current.classList.contains("thumb_active")) {
       let leftShift = e.clientX - offsetLeft;
-      if (leftShift < 0) leftShift = 0;
-      console.log(leftShift);
-      if (leftShift > trackWidth - 4) leftShift = trackWidth - 4;
-      rightThumb.current.style.left = leftShift + "px";
+
+      if (leftShift < leftThumb_shift + thumbSize) leftShift = leftThumb_shift + thumbSize;
+      if (leftShift > trackWidth) leftShift = trackWidth;
+
+      setPercentage("right", onePx * leftShift);
     }
   };
 
@@ -45,7 +65,7 @@ const DoubleRange = ({ text, min, max }) => {
 
   return (
     <div className="doublerange">
-      <div className="doublerange_text">Hello</div>
+      <div className="doublerange_text">if</div>
       <div className="doublerange_range">
         <div ref={track} className="doublerange_track">
           <div onMouseDown={handleDown} ref={leftThumb} className="dr_left_thumb"></div>

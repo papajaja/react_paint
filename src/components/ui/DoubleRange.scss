@@ -45,7 +45,7 @@
   width: $thumb_width;
   height: $thumb_height;
   border-radius: 50%;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.276);
   z-index: 5;
   position: absolute;
   margin-top: -4px;
@@ -57,5 +57,5 @@
 
 .dr_left_thumb {
   margin-left: 0;
-  left: 0;
+  left: 100%;
 }
