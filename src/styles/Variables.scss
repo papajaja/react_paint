@@ -1,12 +1,19 @@
-$settings_width: 200px;
+$settings_width: 250px;
+$settings_padding: 50px;
+$toolbar_width: $settings_width - $settings_padding;
+$settings_height: calc(100vh - $settings_padding * 2);
 $toolbar_height: 80px;
-$properties_gap: 2px;
+$properties_gap: 10px;
 $tool_size: 60%;
 $font_size: 14px;
 $font_color: white;
+$b-radius: 10px;
+$shadow_is: 0 0 20px -5px black;
+$bg_is: lightgray;
+$toolbar_bg: rgb(54, 75, 87);
 
 // counter variables
-$counter_text_width: 135px;
+$counter_text_width: 186px;
 $counter_height: 25px;
 $counter_padding: 5px;
 
@@ -27,3 +34,7 @@ $doublerange_track_height: 4px;
 $doublerange_track_bradius: 1px;
 $thumb_height: 12px;
 $thumb_width: 10px;
+
+// shapes variables
+$choose_height: $toolbar_height / 2;
+$shapes_gap: 3px;

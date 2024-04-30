@@ -70,6 +70,10 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
     e.target.onmouseup = clearActions;
   };
 
+  useEffect(() => {
+    setCount(value);
+  }, [value]);
+
   return (
     <div className="counter">
       <div className="counter_text">{text}</div>

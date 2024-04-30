@@ -10,7 +10,6 @@ const EraserProps = () => {
         value={ToolState.eraserProps.lineWidth}
         setValue={(v) => ToolState.setEraserProps("lineWidth", v)}
       />
-      <DoubleRange />
     </>
   );
 };

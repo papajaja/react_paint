@@ -19,7 +19,7 @@ const App = () => {
               CanvasState.cleanRedo();
             }
           }}
-          width={window.innerWidth - 300 + "px"}
+          width={window.innerWidth - 400 + "px"}
           height={window.innerHeight - 100 + "px"}
           ref={canvasRef}
           className="canvas"
