@@ -1,5 +1,6 @@
 const ShapesProps = () => {
-  return <div></div>;
+  return <>
+  </>;
 };
 
 export default ShapesProps;

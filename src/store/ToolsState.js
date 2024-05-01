@@ -26,6 +26,8 @@ class ToolState_c {
     isFill: false,
     isStroke: true,
     isSpam: false,
+    startAnglePerc: 0,
+    endAnglePerc: 100,
   };
 
   eraserProps = JSON.parse(localStorage.getItem("eraserProps")) || {
@@ -65,7 +67,7 @@ class ToolState_c {
     isStroke: true,
     isSpam: false,
   };
-  setLineProps
+  setLineProps;
   shapes = [{}];
 
   constructor() {

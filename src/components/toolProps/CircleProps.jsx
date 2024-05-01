@@ -2,10 +2,18 @@ import ToolState from "../../store/ToolsState";
 import Checkbox from "../ui/Checkbox";
 import Color from "../ui/Color";
 import Counter from "../ui/Counter";
+import DoubleRange from "../ui/DoubleRange";
 
 const CircleProps = () => {
   return (
     <>
+      <DoubleRange
+        text={"Угол"}
+        leftval={ToolState.circleProps.startAnglePerc}
+        rightval={ToolState.circleProps.endAnglePerc}
+        setleft={(v) => ToolState.setCircleProps("startAnglePerc", v)}
+        setright={(v) => ToolState.setCircleProps("endAnglePerc", v)}
+      />
       <Checkbox
         text={"Заливка"}
         value={ToolState.circleProps.isFill}
@@ -52,3 +60,4 @@ const CircleProps = () => {
 };
 
 export default CircleProps;
+

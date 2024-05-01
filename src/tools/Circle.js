@@ -35,6 +35,8 @@ class Circle extends Tool {
     this.isFill = props.isFill;
     this.isStroke = props.isStroke;
     this.isSpam = props.isSpam;
+    this.startAnglePerc = props.startAnglePerc;
+    this.endAnglePerc = props.endAnglePerc;
   }
 
   mouseDown(e) {
@@ -65,7 +67,14 @@ class Circle extends Tool {
 
       if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
       ctx.beginPath();
-      ctx.arc(this.startX, this.startY, radius, 0, Math.PI * 1.9);
+      ctx.arc(
+        this.startX,
+        this.startY,
+        radius,
+        Math.PI * ((this.startAnglePerc / 100) * 2),
+        Math.PI * ((this.endAnglePerc / 100) * 2)
+      );
+      // console.log("go", this.endAnglePerc);
       if (this.isFill) ctx.fill();
       if (this.isStroke) ctx.stroke();
       ctx.moveTo(this.startX, this.startY);
