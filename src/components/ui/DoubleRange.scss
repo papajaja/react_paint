@@ -47,7 +47,7 @@
   background-color: rgb(189, 189, 189);
   z-index: 5;
   position: absolute;
-  margin-left: $thumb_width / 2 * -1;
+  margin-left: calc($thumb_width / 2 * -1);
   &:hover {
     cursor: pointer;
   }

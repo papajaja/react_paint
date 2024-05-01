@@ -14,13 +14,18 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: gray;
+  background-color: $bg_is;
   canvas {
-    background-color: white;
+    background-color: $toolbar_bg;
+    border-radius: $b-radius;
+    box-shadow: $shadow_is;
   }
 }
 
 .app_settings {
   width: $settings_width;
   height: 100%;
+  padding: $settings_padding $settings_padding $settings_padding 0;
+  background-color: $bg_is;
+  overflow: hidden;
 }

@@ -1,3 +1,4 @@
+import CanvasState from "../store/CanvasState";
 import ToolState from "../store/ToolsState";
 import Tool from "./Tool";
 
@@ -23,7 +24,10 @@ class Eraser extends Tool {
     ctx.lineWidth = props.lineWidth;
     ctx.shadowBlur = props.shadowBlur;
     ctx.shadowColor = props.shadowColor;
-    ctx.strokeStyle = props.strokeStyle;
+    ctx.strokeStyle = window
+      .getComputedStyle(CanvasState.canvas)
+      .getPropertyValue("background-color");
+    // console.log(window.getComputedStyle(CanvasState.canvas).getPropertyValue("background-color"));
   }
 
   mouseDown(e) {

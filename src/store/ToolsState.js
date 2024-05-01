@@ -67,8 +67,43 @@ class ToolState_c {
     isStroke: true,
     isSpam: false,
   };
-  setLineProps;
-  shapes = [{}];
+
+  shapes = JSON.parse(localStorage.getItem("shapes")) || [
+    {
+      name: "shape",
+      fillStyle: "#000000",
+      lineCap: "round",
+      lineJoin: "round",
+      lineWidth: 4,
+      shadowBlur: 0,
+      shadowColor: "#000000",
+      strokeStyle: "#000000",
+      isFill: false,
+      isStroke: true,
+      corners: 3,
+      radius: 50,
+      inset: 1.5,
+      offsetX: 0,
+      offsetY: 0,
+    },
+    {
+      name: "shape",
+      fillStyle: "#000000",
+      lineCap: "round",
+      lineJoin: "round",
+      lineWidth: 4,
+      shadowBlur: 0,
+      shadowColor: "#000000",
+      strokeStyle: "#000000",
+      isFill: false,
+      isStroke: true,
+      corners: 3,
+      radius: 50,
+      inset: 1.5,
+      offsetX: 0,
+      offsetY: 0,
+    },
+  ];
 
   constructor() {
     makeAutoObservable(this);
@@ -76,6 +111,38 @@ class ToolState_c {
 
   setTool(value) {
     this.tool = value;
+  }
+
+  setShapesProps(i, prop, value) {
+    this.shapes[i][prop] = value;
+    localStorage.setItem("shapes", JSON.stringify(this.shapes));
+  }
+
+  addShape() {
+    if (this.shapes.length <= 4)
+      this.shapes.push({
+        name: "shape",
+        fillStyle: "#000000",
+        lineCap: "round",
+        lineJoin: "round",
+        lineWidth: 4,
+        shadowBlur: 0,
+        shadowColor: "#000000",
+        strokeStyle: "#000000",
+        isFill: false,
+        isStroke: true,
+        corners: 3,
+        radius: 50,
+        inset: 1.5,
+        offsetX: 0,
+        offsetY: 0,
+      });
+    localStorage.setItem("shapes", JSON.stringify(this.shapes));
+  }
+
+  removeShape(index) {
+    if (this.shapes.length > 1) this.shapes.splice(index, 1);
+    localStorage.setItem("shapes", JSON.stringify(this.shapes));
   }
 
   setBrushProps(prop, value) {

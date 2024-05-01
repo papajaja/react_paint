@@ -45,10 +45,12 @@
   height: 40px;
   background-size: $tool_size;
   background-repeat: no-repeat;
-  background-color: rgba(255, 192, 203, 0.6);
+  // background-color: rgba(255, 192, 203, 0.6);
   background-position: center center;
+  border-radius: $b-radius;
   &:hover {
     cursor: pointer;
-    background-color: pink;
+    // background-color: whit;
+    backdrop-filter: brightness(150%);
   }
 }
