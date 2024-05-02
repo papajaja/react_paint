@@ -8,7 +8,7 @@ const CircleProps = () => {
   return (
     <>
       <DoubleRange
-        text={"Угол"}
+        text={"-- Угол --"}
         leftval={ToolState.circleProps.startAnglePerc}
         rightval={ToolState.circleProps.endAnglePerc}
         setleft={(v) => ToolState.setCircleProps("startAnglePerc", v)}
@@ -60,4 +60,3 @@ const CircleProps = () => {
 };
 
 export default CircleProps;
-

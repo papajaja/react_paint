@@ -63,9 +63,18 @@ class Circle extends Tool {
       const r1 = Math.abs(this.startX - x);
       const r2 = Math.abs(this.startY - y);
       const radius = Math.abs(Math.sqrt(r1 * r1 + r2 * r2));
-      // const radius = Math.max(r1, r2, r3);
-
       if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
+      ctx.beginPath();
+      ctx.arc(
+        this.startX,
+        this.startY,
+        Math.max(radius - ctx.lineWidth / 2, 0),
+        Math.PI * ((this.startAnglePerc / 100) * 2),
+        Math.PI * ((this.endAnglePerc / 100) * 2)
+      );
+      // ctx.moveTo(this.startX, this.startY);
+      if (this.isFill) ctx.fill();
+      ctx.closePath();
       ctx.beginPath();
       ctx.arc(
         this.startX,
@@ -75,7 +84,6 @@ class Circle extends Tool {
         Math.PI * ((this.endAnglePerc / 100) * 2)
       );
       // console.log("go", this.endAnglePerc);
-      if (this.isFill) ctx.fill();
       if (this.isStroke) ctx.stroke();
       ctx.moveTo(this.startX, this.startY);
       ctx.closePath();

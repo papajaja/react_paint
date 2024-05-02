@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Settings from "./components/Settings";
 import CanvasState from "./store/CanvasState";
 import ToolState from "./store/ToolsState";
+import MouseFollower from "./components/MouseFollower";
 
 const App = () => {
   const canvasRef = useRef(null);
@@ -28,6 +29,7 @@ const App = () => {
       <section className="app_settings">
         <Settings />
       </section>
+      {/* <MouseFollower /> */}
     </div>
   );
 };

@@ -1,0 +1,22 @@
+@import "../../styles/Variables.scss";
+
+.dropdown {
+  height: $dropdown_height;
+  width: 100%;
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 12px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $dropdown_height;
+}

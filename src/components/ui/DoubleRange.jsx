@@ -8,17 +8,16 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
   const [rightPerc, setRightPerc] = useState(rightval);
   const [isLoaded, setLoaded] = useState(false);
 
-  const thumbSize = leftThumb.current?.getBoundingClientRect().width;
-  const trackWidth = track.current?.getBoundingClientRect().width;
-  const onePx = 100 / trackWidth;
-
   useEffect(() => {
-    setLoaded(true);
+    setLoaded((i) => !i);
   }, []);
 
   const handleMove = (e) => {
+    const thumbSize = leftThumb.current?.getBoundingClientRect().width;
+    const trackWidth = track.current?.getBoundingClientRect().width;
+    const onePx = 100 / trackWidth;
+
     const offsetLeft = track.current.getBoundingClientRect().x;
-    const trackWidth = track.current.getBoundingClientRect().width;
 
     const leftThumb_shift = leftThumb.current.offsetLeft;
     const rightThumb_shift = rightThumb.current.offsetLeft;
@@ -29,6 +28,7 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
       if (leftShift > rightThumb_shift) leftShift = rightThumb_shift;
       if (leftShift < 0) leftShift = 0;
       if (leftShift > trackWidth) leftShift = trackWidth;
+      console.log("left", leftShift * onePx);
 
       setLeftPerc(onePx * leftShift);
       setleft(onePx * leftShift);
@@ -39,6 +39,7 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
       if (leftShift < 0) leftShift = 0;
 
       if (leftShift > trackWidth) leftShift = trackWidth;
+      console.log("right", leftShift * onePx);
 
       setRightPerc(onePx * leftShift);
       setright(onePx * leftShift);

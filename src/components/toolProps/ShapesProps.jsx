@@ -103,6 +103,7 @@ const ShapesProps = observer(() => {
         text={"Тень"}
         value={ToolState.shapes[currShape]?.shadowBlur}
         setValue={(v) => ToolState.setShapesProps(currShape, "shadowBlur", v)}
+        min={0}
       />
       <Color
         value={ToolState.shapes[currShape]?.shadowColor}
