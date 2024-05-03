@@ -1,3 +1,4 @@
+import CanvasState from "../store/CanvasState";
 import ToolState from "../store/ToolsState";
 import Tool from "./Tool";
 
@@ -8,6 +9,7 @@ class Shapes extends Tool {
   startY = null;
   shapeIndex = null;
   angle = 0;
+  angleSpeed = 1;
 
   constructor(canvas) {
     super(canvas);
@@ -17,9 +19,11 @@ class Shapes extends Tool {
 
   listen() {
     const cnv = this.canvas;
-    cnv.onmousedown = this.mouseDown.bind(this);
-    cnv.onmousemove = this.mouseMove.bind(this);
-    cnv.onmouseup = this.mouseUp.bind(this);
+    const cnvSh = CanvasState.canvasShell;
+
+    cnvSh.onmousedown = this.mouseDown.bind(this);
+    cnvSh.onmousemove = this.mouseMove.bind(this);
+    cnvSh.onmouseup = this.mouseUp.bind(this);
   }
 
   setProps(shape) {
@@ -49,21 +53,31 @@ class Shapes extends Tool {
 
   mouseUp(e) {
     if (!this.isDrawn) {
-      for (let i = 0; i < ToolState.shapes.length; i++) {
-        const x = e.clientX - e.target.offsetLeft;
-        const y = e.clientY - e.target.offsetTop;
+      this.isDrawn = true;
+      const ctx = this.context;
 
+      const x = e.clientX - e.target.offsetLeft;
+      const y = e.clientY - e.target.offsetTop;
+
+      for (let i = 0; i < ToolState.shapes.length; i++) {
         const shape = ToolState.shapes[i];
-        this.setProps(shape);
-        this.drawShape(
-          x + shape.offsetX,
-          y + shape.offsetY,
-          shape.radius,
-          shape.inset,
-          shape.corners,
-          shape
-        );
+        if (shape.isDraw) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(this.angle);
+          this.setProps(shape);
+          this.drawShape(
+            0 + shape.offsetX,
+            0 + shape.offsetY,
+            shape.radius,
+            shape.inset,
+            shape.corners,
+            shape
+          );
+          ctx.restore();
+        }
       }
+      this.angle += 0.09;
     }
     this.isDown = false;
     this.isDrawn = false;
@@ -72,23 +86,30 @@ class Shapes extends Tool {
   mouseMove(e) {
     if (this.isDown && e.buttons & 1) {
       this.isDrawn = true;
-      // const ctx = this.context;
+      const ctx = this.context;
 
       const x = e.clientX - e.target.offsetLeft;
       const y = e.clientY - e.target.offsetTop;
 
       for (let i = 0; i < ToolState.shapes.length; i++) {
         const shape = ToolState.shapes[i];
-        this.setProps(shape);
-        this.drawShape(
-          x + shape.offsetX,
-          y + shape.offsetY,
-          shape.radius,
-          shape.inset,
-          shape.corners,
-          shape
-        );
+        if (shape.isDraw) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(this.angle);
+          this.setProps(shape);
+          this.drawShape(
+            0 + shape.offsetX,
+            0 + shape.offsetY,
+            shape.radius,
+            shape.inset,
+            shape.corners,
+            shape
+          );
+          ctx.restore();
+        }
       }
+      this.angle += 0.09;
     }
   }
 

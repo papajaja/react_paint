@@ -1,3 +1,4 @@
+import CanvasState from "../store/CanvasState";
 import ToolState from "../store/ToolsState";
 import Tool from "./Tool";
 
@@ -15,9 +16,11 @@ class Brush extends Tool {
 
   listen() {
     const cnv = this.canvas;
-    cnv.onmousedown = this.mouseDown.bind(this);
-    cnv.onmousemove = this.mouseMove.bind(this);
-    cnv.onmouseup = this.mouseUp.bind(this);
+    const cnvSh = CanvasState.canvasShell;
+
+    cnvSh.onmousedown = this.mouseDown.bind(this);
+    cnvSh.onmousemove = this.mouseMove.bind(this);
+    cnvSh.onmouseup = this.mouseUp.bind(this);
   }
 
   setProps() {
@@ -33,8 +36,8 @@ class Brush extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - e.target.offsetLeft;
-    this.startY = e.clientY - e.target.offsetTop;
+    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
     this.setProps();
 
@@ -46,8 +49,9 @@ class Brush extends Tool {
 
   mouseUp(e) {
     if (!this.isDrawn) {
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      console.log(e.clientX, this.canvas.offsetTop, CanvasState.canvasShell.scrollTop);
       const ctx = this.context;
       ctx.beginPath();
       ctx.arc(x, y, ctx.lineWidth / 2, 0, 2 * Math.PI);
@@ -65,8 +69,10 @@ class Brush extends Tool {
       const ctx = this.context;
       const props = ToolState.brushProps;
 
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x =
+        e.clientX - this.canvas.offsetLeft - window.scrollX + CanvasState.canvasShell.scrollLeft;
+      const y =
+        e.clientY - this.canvas.offsetTop - window.scrollY + CanvasState.canvasShell.scrollTop;
 
       ctx.beginPath();
       ctx.moveTo(this.startX, this.startY);

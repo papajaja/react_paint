@@ -7,18 +7,15 @@ import { observer } from "mobx-react";
 
 const ShapesProps = observer(() => {
   const [currShape, setCurrShape] = useState(0);
-  // console.log(ToolState.shapes);
+
   return (
     <>
       <div className="choose_shape">
         {ToolState.shapes.map((shape, i) => (
           <div
-            style={{
-              backgroundColor: currShape === i ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.1)",
-            }}
             onClick={() => setCurrShape(i)}
             key={i}
-            className="shape"
+            className={"shape" + (currShape === i ? " curr_shape" : "")}
           >
             {i + 1}
           </div>
@@ -38,6 +35,11 @@ const ShapesProps = observer(() => {
       >
         Удалить фигуру {currShape + 1}
       </div>
+      <Checkbox
+        text={"Отрисовка"}
+        value={ToolState.shapes[currShape].isDraw}
+        setValue={(v) => ToolState.setShapesProps(currShape, "isDraw", v)}
+      />
       <Counter
         text={"Радиус"}
         min={3}
@@ -76,7 +78,7 @@ const ShapesProps = observer(() => {
       />
       <Checkbox
         text={"Заливка"}
-        value={ToolState.shapes[currShape]?.isFill}
+        value={ToolState.shapes[currShape].isFill}
         setValue={(v) => ToolState.setShapesProps(currShape, "isFill", v)}
       />
       <Color
@@ -86,7 +88,7 @@ const ShapesProps = observer(() => {
       />
       <Checkbox
         text={"Обводка"}
-        value={ToolState.shapes[currShape]?.isStroke}
+        value={ToolState.shapes[currShape].isStroke}
         setValue={(v) => ToolState.setShapesProps(currShape, "isStroke", v)}
       />
       <Counter
