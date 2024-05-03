@@ -4,27 +4,30 @@
   position: relative;
   border-radius: $b-radius;
   overflow: hidden;
+  background-color: $toolbar_bg;
 }
 
 .settings_toolbar {
   height: $toolbar_height;
   display: flex;
   flex-wrap: wrap;
-  background-color: $toolbar_bg;
 }
 
 .bar {
-  height: calc($settings_height - $toolbar_height);
+  max-height: calc($settings_height - $toolbar_height);
+  min-height: $toolbar_height;
+
   width: 100%;
   display: flex;
 }
 
 .settings_properties {
   padding-top: $properties_gap;
-  height: calc($settings_height - $toolbar_height);
+  max-height: calc($settings_height - $toolbar_height);
+  min-height: $toolbar_height;
   overflow: hidden;
   width: 100%;
-  background-color: $toolbar_bg;
+  // background-color: $toolbar_bg;
   // margin-top: 5px;
   // position: relative;
   display: flex;

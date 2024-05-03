@@ -7,6 +7,11 @@ import DoubleRange from "../ui/DoubleRange";
 const CircleProps = () => {
   return (
     <>
+      <Checkbox
+        text={"Спам - режим"}
+        value={ToolState.circleProps.isSpam}
+        setValue={(v) => ToolState.setCircleProps("isSpam", v)}
+      />
       <DoubleRange
         text={"-- Угол --"}
         leftval={ToolState.circleProps.startAnglePerc}
@@ -18,11 +23,6 @@ const CircleProps = () => {
         text={"Заливка"}
         value={ToolState.circleProps.isFill}
         setValue={(v) => ToolState.setCircleProps("isFill", v)}
-      />
-      <Checkbox
-        text={"Спам - режим"}
-        value={ToolState.circleProps.isSpam}
-        setValue={(v) => ToolState.setCircleProps("isSpam", v)}
       />
       <Color
         value={ToolState.circleProps.fillStyle}
