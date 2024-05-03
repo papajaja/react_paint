@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class CanvasState_c {
   canvas = null;
+  canvasShell = null;
   redoList = [];
   undoList = [];
 

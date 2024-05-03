@@ -89,7 +89,13 @@ const Settings = () => {
     <div className="settings_block">
       <header className="settings_toolbar">
         {tools.map((tool, i) => (
-          <button onClick={tool.callback} key={i} className={"tool " + tool.name} />
+          <button
+            onClick={tool.callback}
+            key={i}
+            className={
+              "tool " + tool.name + (tool.name === ToolState.tool?.name ? " tool_active" : "")
+            }
+          />
         ))}
       </header>
       <footer className="settings_properties">

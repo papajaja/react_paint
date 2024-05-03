@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Checkbox = ({ text, value, setValue }) => {
   const [isActive, setActive] = useState(value);
   const handleSwitcher = () => {
-    setActive((i) => !i);
     setValue(!isActive);
+    setActive((i) => !i);
   };
+
+  useEffect(() => {
+    setValue(value);
+    setActive(value);
+  }, [value]);
 
   return (
     <div onClick={handleSwitcher} className="checkbox">

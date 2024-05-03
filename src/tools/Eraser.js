@@ -11,9 +11,11 @@ class Eraser extends Tool {
 
   listen() {
     const cnv = this.canvas;
-    cnv.onmousedown = this.mouseDown.bind(this);
-    cnv.onmousemove = this.mouseMove.bind(this);
-    cnv.onmouseup = this.mouseUp.bind(this);
+    const cnvSh = CanvasState.canvasShell;
+
+    cnvSh.onmousedown = this.mouseDown.bind(this);
+    cnvSh.onmousemove = this.mouseMove.bind(this);
+    cnvSh.onmouseup = this.mouseUp.bind(this);
   }
 
   setProps() {

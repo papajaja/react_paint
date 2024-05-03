@@ -85,6 +85,7 @@ class ToolState_c {
       inset: 1.5,
       offsetX: 0,
       offsetY: 0,
+      isDraw: true,
     },
     {
       name: "shape",
@@ -102,6 +103,7 @@ class ToolState_c {
       inset: 1.5,
       offsetX: 0,
       offsetY: 0,
+      isDraw: true,
     },
   ];
 
@@ -132,10 +134,11 @@ class ToolState_c {
         isFill: false,
         isStroke: true,
         corners: 3,
-        radius: 50,
-        inset: 1.5,
+        radius: 25,
+        inset: 2,
         offsetX: 0,
         offsetY: 0,
+        isDraw: true,
       });
     localStorage.setItem("shapes", JSON.stringify(this.shapes));
   }
