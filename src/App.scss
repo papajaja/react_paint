@@ -20,16 +20,21 @@
     background-color: white;
     border-radius: $b-radius;
     box-shadow: $shadow_is;
+    // scale: 20;
   }
 }
 
 .canvas_shell {
-  border: 2px solid black;
-  background-color: red;
-  overflow: auto;
-  padding: 200px;
+  // border: 2px solid black;
+  border-right: 1px solid black;
+  // zoom: 2;
+  background-color: lightgray;
+  overflow: hidden;
+  padding: 1000px;
   height: 100vh;
   width: $canvas_shell_width;
+  border-right: 1px solid black;
+  // scale: 1;
 }
 
 .app_settings {

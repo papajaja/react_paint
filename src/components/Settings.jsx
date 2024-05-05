@@ -15,6 +15,7 @@ import RectProps from "./toolProps/RectProps";
 import ShapesProps from "./toolProps/ShapesProps";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
+import Move from "../tools/Move";
 
 const Settings = () => {
   const tools = [
@@ -81,7 +82,15 @@ const Settings = () => {
     },
     {
       name: "settings",
-      callback: () => {},
+      callback: () => {
+        CanvasState.canvas.getContext("2d").scale(2, 2);
+      },
+    },
+    {
+      name: "move",
+      callback: () => {
+        ToolState.setTool(new Move(CanvasState.canvas));
+      },
     },
   ];
 

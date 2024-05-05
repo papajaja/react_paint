@@ -35,13 +35,14 @@ class Brush extends Tool {
   }
 
   mouseDown(e) {
+    const ctx = this.context;
+
     this.isDown = true;
     this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
     this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
     this.setProps();
 
-    const ctx = this.context;
     ctx.beginPath();
     ctx.moveTo(this.startX, this.startY);
     ctx.closePath();
@@ -49,10 +50,9 @@ class Brush extends Tool {
 
   mouseUp(e) {
     if (!this.isDrawn) {
+      const ctx = this.context;
       const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
       const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
-      console.log(e.clientX, this.canvas.offsetTop, CanvasState.canvasShell.scrollTop);
-      const ctx = this.context;
       ctx.beginPath();
       ctx.arc(x, y, ctx.lineWidth / 2, 0, 2 * Math.PI);
       ctx.fillStyle = ctx.strokeStyle;
