@@ -44,8 +44,9 @@ class Circle extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - e.target.offsetLeft;
-    this.startY = e.clientY - e.target.offsetTop;
+    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+    // console.log(this.startX, this.startY);
 
     this.setProps();
 
@@ -61,8 +62,9 @@ class Circle extends Tool {
     if (this.isDown && e.buttons & 1) {
       const ctx = this.context;
 
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+
       const r1 = Math.abs(this.startX - x);
       const r2 = Math.abs(this.startY - y);
       const radius = Math.abs(Math.sqrt(r1 * r1 + r2 * r2));

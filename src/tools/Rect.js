@@ -42,8 +42,8 @@ class Rect extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - e.target.offsetLeft;
-    this.startY = e.clientY - e.target.offsetTop;
+    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
     this.setProps();
 
@@ -59,8 +59,8 @@ class Rect extends Tool {
     if (this.isDown && e.buttons & 1) {
       const ctx = this.context;
 
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
       if (!this.isSpam) ctx.putImageData(this.img, 0, 0);
       ctx.beginPath();

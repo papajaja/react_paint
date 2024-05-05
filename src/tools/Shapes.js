@@ -40,8 +40,8 @@ class Shapes extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - e.target.offsetLeft;
-    this.startY = e.clientY - e.target.offsetTop;
+    this.startX = e.clientX - this.canvas.offsetLeft;
+    this.startY = e.clientY - this.canvas.offsetTop;
 
     // this.setProps();
 
@@ -56,8 +56,8 @@ class Shapes extends Tool {
       this.isDrawn = true;
       const ctx = this.context;
 
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
       for (let i = 0; i < ToolState.shapes.length; i++) {
         const shape = ToolState.shapes[i];
@@ -88,8 +88,8 @@ class Shapes extends Tool {
       this.isDrawn = true;
       const ctx = this.context;
 
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
 
       for (let i = 0; i < ToolState.shapes.length; i++) {
         const shape = ToolState.shapes[i];

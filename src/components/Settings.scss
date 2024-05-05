@@ -14,8 +14,10 @@
 }
 
 .bar {
-  max-height: calc($settings_height - $toolbar_height);
-  min-height: $toolbar_height;
+  // max-height: calc($settings_height - $toolbar_height);
+  // min-height: $toolbar_height;
+  // height: 100vh;
+  // background-color: red;
 
   width: 100%;
   display: flex;
@@ -23,8 +25,9 @@
 
 .settings_properties {
   padding-top: $properties_gap;
-  max-height: calc($settings_height - $toolbar_height);
-  min-height: $toolbar_height;
+  // max-height: calc($settings_height - $toolbar_height);
+  // min-height: $toolbar_height;
+  height: 100vh;
   overflow: hidden;
   width: 100%;
   // background-color: $toolbar_bg;

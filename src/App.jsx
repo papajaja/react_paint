@@ -16,19 +16,17 @@ const App = () => {
   return (
     <div className="app">
       <section className="app_canvas">
-        <div ref={canvasShellRef} className="canvas_shell">
-          <canvas
-            onMouseDown={() => {
-              if (ToolState.tool) {
-                CanvasState.pushUndo();
-                CanvasState.cleanRedo();
-              }
-            }}
-            width={1200}
-            height={600}
-            ref={canvasRef}
-            className="canvas"
-          />
+        <div
+          onMouseDown={() => {
+            if (ToolState.tool) {
+              CanvasState.pushUndo();
+              CanvasState.cleanRedo();
+            }
+          }}
+          ref={canvasShellRef}
+          className="canvas_shell"
+        >
+          <canvas width={1000} height={600} ref={canvasRef} className="canvas" />
         </div>
       </section>
       <section className="app_settings">
