@@ -16,8 +16,15 @@ import ShapesProps from "./toolProps/ShapesProps";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import Move from "../tools/Move";
+import SettingsTool from "../tools/Settings";
+import SettingsProps from "./toolProps/SettingsProps";
 
 const Settings = () => {
+  if (ToolState.tool?.name == "settings") {
+    document.body.style.cursor = "grab";
+  } else {
+    document.body.style.cursor = "";
+  }
   const tools = [
     {
       name: "brush",
@@ -25,6 +32,12 @@ const Settings = () => {
         ToolState.setTool(new Brush(CanvasState.canvas));
       },
     },
+    // {
+    //   name: "move",
+    //   callback: () => {
+    //     ToolState.setTool(new Move(CanvasState.canvas));
+    //   },
+    // },
     {
       name: "eraser",
       callback: () => {
@@ -83,13 +96,7 @@ const Settings = () => {
     {
       name: "settings",
       callback: () => {
-        CanvasState.canvas.getContext("2d").scale(2, 2);
-      },
-    },
-    {
-      name: "move",
-      callback: () => {
-        ToolState.setTool(new Move(CanvasState.canvas));
+        ToolState.setTool(new SettingsTool(CanvasState.canvas));
       },
     },
   ];
@@ -115,6 +122,7 @@ const Settings = () => {
           {ToolState.tool?.name === "line" ? <LineProps /> : null}
           {ToolState.tool?.name === "rect" ? <RectProps /> : null}
           {ToolState.tool?.name === "shapes" ? <ShapesProps /> : null}
+          {ToolState.tool?.name === "settings" ? <SettingsProps /> : null}
         </SimpleBar>
       </footer>
     </div>

@@ -43,4 +43,7 @@
   padding: $settings_padding $settings_padding $settings_padding 0;
   background-color: $bg_is;
   overflow: hidden;
+  &:hover {
+    cursor: default;
+  }
 }

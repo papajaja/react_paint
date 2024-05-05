@@ -1,7 +1,7 @@
 import CanvasState from "../store/CanvasState";
 import Tool from "./Tool";
 
-class Move extends Tool {
+class SettingsTool extends Tool {
   shell = null;
   startX = null;
   startY = null;
@@ -10,7 +10,7 @@ class Move extends Tool {
 
   constructor(canvas) {
     super(canvas);
-    this.name = "move";
+    this.name = "settings";
     this.listen();
   }
 
@@ -53,4 +53,4 @@ class Move extends Tool {
   }
 }
 
-export default Move;
+export default SettingsTool;
