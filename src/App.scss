@@ -41,7 +41,7 @@
   width: $settings_width;
   height: 100%;
   padding: $settings_padding $settings_padding $settings_padding 0;
-  background-color: $bg_is;
+  background-color: transparent;
   overflow: hidden;
   &:hover {
     cursor: default;

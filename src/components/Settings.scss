@@ -1,10 +1,12 @@
 @import "../styles/Variables.scss";
 
 .settings_block {
-  position: relative;
+  position: absolute;
   border-radius: $b-radius;
   overflow: hidden;
   background-color: $toolbar_bg;
+  height: calc(100vh - 400px);
+  width: 200px;
 }
 
 .settings_toolbar {
@@ -14,25 +16,15 @@
 }
 
 .bar {
-  // max-height: calc($settings_height - $toolbar_height);
-  // min-height: $toolbar_height;
-  // height: 100vh;
-  // background-color: red;
-
   width: 100%;
   display: flex;
 }
 
 .settings_properties {
   padding-top: $properties_gap;
-  // max-height: calc($settings_height - $toolbar_height);
-  // min-height: $toolbar_height;
   height: 100vh;
   overflow: hidden;
   width: 100%;
-  // background-color: $toolbar_bg;
-  // margin-top: 5px;
-  // position: relative;
   display: flex;
   flex-direction: column;
   .simplebar-scrollbar {

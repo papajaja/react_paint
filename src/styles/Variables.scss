@@ -1,17 +1,17 @@
 $settings_width: 250px;
-$settings_padding: 0px;
+$settings_padding: 50px;
 $toolbar_width: $settings_width - $settings_padding;
 $settings_height: calc(100vh - $settings_padding * 2);
-$toolbar_height: 80px;
 $properties_gap: 10px;
-$tool_size: 60%;
 $font_size: 14px;
 $font_color: white;
-$b-radius: 0px;
+$b-radius: 20px;
 $shadow_is: 0 0 20px -5px black;
 $bg_is: lightgray;
+$tool_size: 60%;
+
 $toolbar_bg: rgb(87, 61, 54);
-// $toolbar_bg: ;
+$toolbar_height: 80px;
 $canvas_shell_width: calc(100vw - $toolbar_width);
 
 // counter variables

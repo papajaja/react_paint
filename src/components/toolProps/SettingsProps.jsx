@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import CanvasState from "../../store/CanvasState";
 import ToolState from "../../store/ToolsState";
 import Counter from "../ui/Counter";
@@ -5,9 +6,17 @@ import Counter from "../ui/Counter";
 const SettingsProps = () => {
   const handleSet = () => {
     const ctx = CanvasState.canvas.getContext("2d");
-    // ctx.miterLimit = 20;
-    // ctx.globalAlpha = 0.1;
+
+    // ctx.globalCompositeOperation = "lighter";
+    ctx.globalCompositeOperation = "color-dodge";
+    // ctx.globalCompositeOperation = "difference";
+
+    // ctx.filter = "blur(2px)";
+    // ctx.filter = "brightness(150%)";
   };
+  useEffect(() => {
+    handleSet();
+  }, []);
   return (
     <>
       <Counter
