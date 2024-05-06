@@ -45,8 +45,8 @@ class Eraser extends Tool {
 
   mouseUp(e) {
     if (!this.isDrawn) {
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
+      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
       const ctx = this.context;
       ctx.beginPath();
       ctx.arc(x, y, ctx.lineWidth / 2, 0, 2 * Math.PI);
