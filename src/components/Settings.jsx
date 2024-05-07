@@ -101,32 +101,30 @@ const Settings = () => {
   ];
 
   return (
-    <div className="settings_block">
-      <SimpleBar style={{ height: "100%" }}>
-        <header className="settings_toolbar">
-          {tools.map((tool, i) => (
-            <button
-              onClick={tool.callback}
-              key={i}
-              className={
-                "tool " + tool.name + (tool.name === ToolState.tool?.name ? " tool_active" : "")
-              }
-            />
-          ))}
-        </header>
-        <footer className="settings_properties">
-          <SimpleBar style={{ height: "100%" }} className="bar">
-            {ToolState.tool?.name === "brush" ? <BrushProps /> : null}
-            {ToolState.tool?.name === "circle" ? <CircleProps /> : null}
-            {ToolState.tool?.name === "eraser" ? <EraserProps /> : null}
-            {ToolState.tool?.name === "line" ? <LineProps /> : null}
-            {ToolState.tool?.name === "rect" ? <RectProps /> : null}
-            {ToolState.tool?.name === "shapes" ? <ShapesProps /> : null}
-            {ToolState.tool?.name === "settings" ? <SettingsProps /> : null}
-          </SimpleBar>
-        </footer>
-      </SimpleBar>
-    </div>
+    <section className="settings_block">
+      <div className="settings_toolbar">
+        {tools.map((tool, i) => (
+          <button
+            onClick={tool.callback}
+            key={i}
+            className={
+              "tool " + tool.name + (tool.name === ToolState.tool?.name ? " tool_active" : "")
+            }
+          />
+        ))}
+      </div>
+      <div className="settings_properties">
+        <SimpleBar style={{ height: "100%" }} className="bar">
+          {ToolState.tool?.name === "brush" ? <BrushProps /> : null}
+          {ToolState.tool?.name === "circle" ? <CircleProps /> : null}
+          {ToolState.tool?.name === "eraser" ? <EraserProps /> : null}
+          {ToolState.tool?.name === "line" ? <LineProps /> : null}
+          {ToolState.tool?.name === "rect" ? <RectProps /> : null}
+          {ToolState.tool?.name === "shapes" ? <ShapesProps /> : null}
+          {ToolState.tool?.name === "settings" ? <SettingsProps /> : null}
+        </SimpleBar>
+      </div>
+    </section>
   );
 };
 

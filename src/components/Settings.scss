@@ -1,12 +1,20 @@
 @import "../styles/Variables.scss";
 
 .settings_block {
-  position: absolute;
-  border-radius: $b-radius;
   overflow: hidden;
-  background-color: $toolbar_bg;
-  height: calc(100vh - 400px);
+  position: absolute;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.9);
+  box-shadow: 0 0 10px 0px black;
+  height: calc(100vh - 100px);
+  max-height: 1000px;
+  margin-top: 50px;
+  margin-right: 50px;
+  right: 0;
   width: 200px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(4px) contrast(50%);
 }
 
 .settings_toolbar {
@@ -15,22 +23,13 @@
   flex-wrap: wrap;
 }
 
-.bar {
-  width: 100%;
-  display: flex;
-}
-
 .settings_properties {
-  padding-top: $properties_gap;
-  height: 100vh;
   overflow: hidden;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   .simplebar-scrollbar {
     &:before {
       margin-left: 4px;
-      width: 3px;
+      width: 2px;
       background-color: rgba(255, 255, 255, 1);
     }
   }

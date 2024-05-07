@@ -8,7 +8,8 @@
 }
 
 .app_canvas {
-  width: calc(100vw - $settings_width);
+  // width: calc(100vw - $settings_width);
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -32,8 +33,7 @@
   overflow: hidden;
   padding: 1000px;
   height: 100vh;
-  width: $canvas_shell_width;
-  border-right: 1px solid black;
+  width: 100%;
   // scale: 1;
 }
 

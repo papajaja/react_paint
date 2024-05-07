@@ -5,9 +5,25 @@ class CanvasState_c {
   canvasShell = null;
   redoList = [];
   undoList = [];
+  globalCompositeOperation = "souce-over";
+  filter = "";
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  setGlobalCompositeOperation(value) {
+    this.globalCompositeOperation = value;
+    if (this.canvas) {
+      this.canvas.getContext("2d").globalCompositeOperation = value;
+    }
+  }
+
+  setFilter(value) {
+    this.filter = value;
+    if (this.canvas) {
+      this.canvas.getContext("2d").filter = value;
+    }
   }
 
   pushUndo() {

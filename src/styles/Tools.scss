@@ -49,12 +49,11 @@
   height: 40px;
   background-size: $tool_size;
   background-repeat: no-repeat;
-  // background-color: rgba(255, 192, 203, 0.6);
   background-position: center center;
-  border-radius: $b-radius;
+  scale: 0.9;
+  border-radius: 8px;
   &:hover {
     cursor: pointer;
-    // background-color: whit;
-    backdrop-filter: brightness(150%);
+    backdrop-filter: brightness(110%);
   }
 }

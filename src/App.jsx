@@ -29,10 +29,7 @@ const App = () => {
           <canvas width={1000} height={600} ref={canvasRef} className="canvas" />
         </div>
       </section>
-      <section className="app_settings">
-        <Settings />
-      </section>
-      {/* <MouseFollower /> */}
+      <Settings />
     </div>
   );
 };
