@@ -6,6 +6,7 @@ import Counter from "../ui/Counter";
 const LineProps = () => {
   return (
     <>
+      <div className="toolname">Линия</div>
       <Checkbox
         text={"Спам - режим"}
         value={ToolState.lineProps.isSpam}

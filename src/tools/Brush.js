@@ -21,6 +21,10 @@ class Brush extends Tool {
     cnvSh.onmousedown = this.mouseDown.bind(this);
     cnvSh.onmousemove = this.mouseMove.bind(this);
     cnvSh.onmouseup = this.mouseUp.bind(this);
+
+    cnvSh.ontouchstart = this.mouseDown.bind(this);
+    cnvSh.ontouchmove = this.mouseMove.bind(this);
+    cnvSh.ontouchend = this.mouseUp.bind(this);
   }
 
   setProps() {

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import CanvasState from "../../store/CanvasState";
+import { observer } from "mobx-react";
 
-const DropMenu = ({ items, name, setItems }) => {
-  const [isActive, setActive] = useState(false);
+const DropMenu = observer(({ items, name }) => {
+  const [isActive, setActive] = useState(CanvasState.globalCompositeOperation !== "source-over");
   const switchActive = (item) => {
     item.callback();
-    setItems(items.map((i) => ({ ...i, isActive: i.name === item.name })));
+    CanvasState.setGlobalCompositeOperation(item.name);
   };
 
   return (
@@ -16,7 +18,10 @@ const DropMenu = ({ items, name, setItems }) => {
       <div style={{ height: isActive ? "80px" : "0px" }} className="dropdown_content">
         {items.map((item, i) => (
           <div
-            className={"dropdown_item" + (item.isActive ? " active" : "")}
+            className={
+              "dropdown_item" +
+              (item.name === CanvasState.globalCompositeOperation ? " active" : "")
+            }
             onClick={() => switchActive(item)}
             key={i}
           >
@@ -26,6 +31,6 @@ const DropMenu = ({ items, name, setItems }) => {
       </div>
     </div>
   );
-};
+});
 
 export default DropMenu;

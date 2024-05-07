@@ -4,10 +4,12 @@
   overflow: hidden;
   position: absolute;
   border-radius: 10px;
-  background-color: rgba(128, 128, 128, 0.9);
+  // background-color: rgba(128, 128, 128, 0.9);
+  background-color: rgba(24, 57, 24, 0.732);
   box-shadow: 0 0 10px 0px black;
   height: calc(100vh - 100px);
   max-height: 1000px;
+  min-height: 200px;
   margin-top: 50px;
   margin-right: 50px;
   right: 0;
@@ -25,6 +27,7 @@
 
 .settings_properties {
   overflow: hidden;
+  height: 100%;
   width: 100%;
   .simplebar-scrollbar {
     &:before {

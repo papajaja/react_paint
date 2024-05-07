@@ -5,11 +5,17 @@ class CanvasState_c {
   canvasShell = null;
   redoList = [];
   undoList = [];
-  globalCompositeOperation = "souce-over";
+  globalCompositeOperation = "source-over";
   filter = "";
+  angleSpeed = 0.1;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  setAngleSpeed(value) {
+    console.log(value);
+    this.angleSpeed = value;
   }
 
   setGlobalCompositeOperation(value) {

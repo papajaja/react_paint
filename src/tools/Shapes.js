@@ -9,7 +9,6 @@ class Shapes extends Tool {
   startY = null;
   shapeIndex = null;
   angle = 0;
-  angleSpeed = 1;
 
   constructor(canvas) {
     super(canvas);
@@ -77,7 +76,7 @@ class Shapes extends Tool {
           ctx.restore();
         }
       }
-      this.angle += 0.09;
+      this.angle += CanvasState.angleSpeed;
     }
     this.isDown = false;
     this.isDrawn = false;
@@ -109,7 +108,7 @@ class Shapes extends Tool {
           ctx.restore();
         }
       }
-      this.angle += 0.09;
+      this.angle += CanvasState.angleSpeed;
     }
   }
 

@@ -11,6 +11,11 @@ const App = () => {
   useEffect(() => {
     CanvasState.canvas = canvasRef.current;
     CanvasState.canvasShell = canvasShellRef.current;
+    const scrollLeft =
+      canvasRef.current.offsetLeft - (window.innerWidth - canvasRef.current.width) / 2 + 120; // fix 120
+    const scrollTop =
+      canvasRef.current.offsetTop - (window.innerHeight - canvasRef.current.height) / 2;
+    canvasShellRef.current.scroll(scrollLeft, scrollTop);
   }, [canvasRef]);
 
   return (

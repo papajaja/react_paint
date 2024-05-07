@@ -6,6 +6,7 @@ import Counter from "../ui/Counter";
 const RectProps = () => {
   return (
     <>
+      <div className="toolname">Квадрат</div>
       <Checkbox
         text={"Спам - режим"}
         value={ToolState.rectProps.isSpam}

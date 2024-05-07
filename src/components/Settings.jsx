@@ -15,12 +15,11 @@ import RectProps from "./toolProps/RectProps";
 import ShapesProps from "./toolProps/ShapesProps";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
-import Move from "../tools/Move";
 import SettingsTool from "../tools/Settings";
 import SettingsProps from "./toolProps/SettingsProps";
 
 const Settings = () => {
-  if (ToolState.tool?.name == "settings") {
+  if (ToolState.tool?.name === "settings") {
     document.body.style.cursor = "grab";
   } else {
     document.body.style.cursor = "";
@@ -122,6 +121,7 @@ const Settings = () => {
           {ToolState.tool?.name === "rect" ? <RectProps /> : null}
           {ToolState.tool?.name === "shapes" ? <ShapesProps /> : null}
           {ToolState.tool?.name === "settings" ? <SettingsProps /> : null}
+          {!ToolState.tool?.name ? <div className="preview"></div> : null}
         </SimpleBar>
       </div>
     </section>

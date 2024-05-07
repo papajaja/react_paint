@@ -1,16 +1,15 @@
 import ToolState from "../../store/ToolsState";
 import Counter from "../ui/Counter";
-import DropMenu from "../ui/DropMenu";
 
 const EraserProps = () => {
   return (
     <>
+      <div className="toolname">Ластик</div>
       <Counter
         text={"Толщина линии"}
         value={ToolState.eraserProps.lineWidth}
         setValue={(v) => ToolState.setEraserProps("lineWidth", v)}
       />
-      <DropMenu />
     </>
   );
 };

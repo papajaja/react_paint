@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react";
 import CanvasState from "../../store/CanvasState";
-import ToolState from "../../store/ToolsState";
 import Counter from "../ui/Counter";
 import DropMenu from "../ui/DropMenu";
 
 const SettingsProps = () => {
-  console.log("render");
-  const handleSet = () => {
-    const ctx = CanvasState.canvas?.getContext("2d");
-
-    // ctx.globalCompositeOperation = "lighter";
-    // ctx.globalCompositeOperation = "color-dodge";
-    // ctx.globalCompositeOperation = "source-over";
-    // ctx.globalCompositeOperation = "difference";
-
-    // ctx.filter = "blur(2px) brightness(150%)";
-    // ctx.filter = "blur(0px) brightness(100%)";
-    // ctx.filter = "brightness(150%)";
-  };
-
-  const [items, setItems] = useState([
+  const items = [
     {
       name: "source-over",
       callback: () => {
@@ -48,20 +32,21 @@ const SettingsProps = () => {
       },
       isActive: false,
     },
-  ]);
+  ];
 
-  useEffect(() => {
-    handleSet();
-  }, []);
   return (
     <>
+      <div className="toolname">Настройки</div>
       <Counter
         text={"Скорость вращ."}
-        value={ToolState.brushProps.lineWidth}
-        setValue={(v) => ToolState.setBrushProps("lineWidth", v)}
-        step={0.01}
+        value={CanvasState.angleSpeed * 100}
+        setValue={(v) => CanvasState.setAngleSpeed(v / 100)}
+        step={1}
+        min={0}
+        max={20}
       />
-      <DropMenu name={"Composite G.O."} items={items} setItems={setItems} />
+      <div className="warning">- Возможны лаги -</div>
+      <DropMenu name={"Composite G.O."} items={items} />
     </>
   );
 };

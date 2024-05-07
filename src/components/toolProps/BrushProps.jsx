@@ -1,12 +1,11 @@
 import ToolState from "../../store/ToolsState";
-import Checkbox from "../ui/Checkbox";
 import Color from "../ui/Color";
 import Counter from "../ui/Counter";
-import DoubleRange from "../ui/DoubleRange";
 
 const BrushProps = () => {
   return (
     <>
+      <div className="toolname">Кисть</div>
       <Counter
         text={"Толщина линии"}
         value={ToolState.brushProps.lineWidth}

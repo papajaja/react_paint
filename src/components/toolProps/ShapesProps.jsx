@@ -10,6 +10,7 @@ const ShapesProps = observer(() => {
 
   return (
     <>
+      <div className="toolname">Фигуры</div>
       <div className="choose_shape">
         {ToolState.shapes.map((shape, i) => (
           <div
