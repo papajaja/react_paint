@@ -22,7 +22,11 @@ const App = () => {
     <div className="app">
       <section className="app_canvas">
         <div
+          onPointerUp={() => {
+            document.querySelector(".settings_block").style.pointerEvents = "all";
+          }}
           onPointerDown={() => {
+            document.querySelector(".settings_block").style.pointerEvents = "none";
             if (ToolState.tool) {
               CanvasState.pushUndo();
               CanvasState.cleanRedo();
