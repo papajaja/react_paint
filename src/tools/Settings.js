@@ -18,9 +18,30 @@ class SettingsTool extends Tool {
     const cnvSh = CanvasState.canvasShell;
     this.shell = cnvSh;
 
-    cnvSh.onmousedown = this.mouseDown.bind(this);
-    cnvSh.onmousemove = this.mouseMove.bind(this);
-    cnvSh.onmouseup = this.mouseUp.bind(this);
+    cnvSh.onpointerdown = this.mouseDown.bind(this);
+    cnvSh.onpointerup = this.mouseUp.bind(this);
+    cnvSh.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ) {
+      cnvSh.ontouchmove = this.mouseMove.bind(this);
+      document.body.oncontextmenu = (e) => {
+        e.preventDefault();
+      };
+    } else {
+      cnvSh.onpointermove = this.mouseMove.bind(this);
+    }
+  }
+
+  getPosition(event) {
+    const touch = event.touches ? event.touches[0] : event;
+    return {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
   }
 
   mouseDown(e) {
@@ -30,8 +51,10 @@ class SettingsTool extends Tool {
     this.scrollLeft = scrollLeft;
     this.scrollTop = scrollTop;
 
-    this.startX = e.clientX;
-    this.startY = e.clientY;
+    const { x, y } = this.getPosition(e);
+
+    this.startX = x;
+    this.startY = y;
 
     this.isMouseDown = true;
   }
@@ -41,14 +64,13 @@ class SettingsTool extends Tool {
   }
 
   mouseMove(e) {
-    if (this.isMouseDown && e.buttons & 1) {
-      const scrollLeft = this.shell.scrollLeft;
-      const scrollTop = this.shell.scrollTop;
+    if (this.isMouseDown) {
+      const { x, y } = this.getPosition(e);
 
-      const x = this.startX - e.clientX + this.scrollLeft;
-      const y = this.startY - e.clientY + this.scrollTop;
+      const x1 = this.startX - x + this.scrollLeft;
+      const y1 = this.startY - y + this.scrollTop;
 
-      this.shell.scroll(x, y);
+      this.shell.scroll(x1, y1);
     }
   }
 }

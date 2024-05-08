@@ -15,14 +15,31 @@ class Circle extends Tool {
     this.name = "circle";
     this.listen();
   }
-
   listen() {
-    const cnv = this.canvas;
     const cnvSh = CanvasState.canvasShell;
 
-    cnvSh.onmousedown = this.mouseDown.bind(this);
-    cnvSh.onmousemove = this.mouseMove.bind(this);
-    cnvSh.onmouseup = this.mouseUp.bind(this);
+    cnvSh.onpointerdown = this.mouseDown.bind(this);
+    cnvSh.onpointerup = this.mouseUp.bind(this);
+    cnvSh.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ) {
+      cnvSh.ontouchmove = this.mouseMove.bind(this);
+    } else {
+      cnvSh.onpointermove = this.mouseMove.bind(this);
+    }
+  }
+
+  getPosition(event) {
+    const rect = this.canvas.getBoundingClientRect();
+    const touch = event.touches ? event.touches[0] : event;
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
+    };
   }
 
   setProps() {
@@ -44,10 +61,9 @@ class Circle extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
-    // console.log(this.startX, this.startY);
-
+    const { x, y } = this.getPosition(e);
+    this.startX = x;
+    this.startY = y;
     this.setProps();
 
     const ctx = this.context;
@@ -59,12 +75,9 @@ class Circle extends Tool {
   }
 
   mouseMove(e) {
-    if (this.isDown && e.buttons & 1) {
+    if (this.isDown) {
       const ctx = this.context;
-
-      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
-
+      const { x, y } = this.getPosition(e);
       const r1 = Math.abs(this.startX - x);
       const r2 = Math.abs(this.startY - y);
       const radius = Math.abs(Math.sqrt(r1 * r1 + r2 * r2));
@@ -77,7 +90,6 @@ class Circle extends Tool {
         Math.PI * ((this.startAnglePerc / 100) * 2),
         Math.PI * ((this.endAnglePerc / 100) * 2)
       );
-      // ctx.moveTo(this.startX, this.startY);
       if (this.isFill) ctx.fill();
       ctx.closePath();
       ctx.beginPath();
@@ -88,7 +100,6 @@ class Circle extends Tool {
         Math.PI * ((this.startAnglePerc / 100) * 2),
         Math.PI * ((this.endAnglePerc / 100) * 2)
       );
-      // console.log("go", this.endAnglePerc);
       if (this.isStroke) ctx.stroke();
       ctx.moveTo(this.startX, this.startY);
       ctx.closePath();

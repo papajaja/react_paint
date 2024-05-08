@@ -54,8 +54,16 @@
   background-position: center center;
   scale: 0.9;
   border-radius: 8px;
-  &:hover {
-    cursor: pointer;
-    backdrop-filter: brightness(110%);
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      backdrop-filter: brightness(110%);
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      backdrop-filter: brightness(110%);
+    }
   }
 }

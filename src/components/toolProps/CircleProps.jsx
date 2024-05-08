@@ -8,6 +8,13 @@ const CircleProps = () => {
   return (
     <>
       <div className="toolname">Круг</div>
+      <DoubleRange
+        text={""}
+        leftval={ToolState.circleProps.startAnglePerc}
+        rightval={ToolState.circleProps.endAnglePerc}
+        setleft={(v) => ToolState.setCircleProps("startAnglePerc", v)}
+        setright={(v) => ToolState.setCircleProps("endAnglePerc", v)}
+      />
       <Checkbox
         text={"Spam-mode"}
         value={ToolState.circleProps.isSpam}
@@ -17,13 +24,6 @@ const CircleProps = () => {
         text={"Заливка"}
         value={ToolState.circleProps.isFill}
         setValue={(v) => ToolState.setCircleProps("isFill", v)}
-      />
-      <DoubleRange
-        text={"-- Угол --"}
-        leftval={ToolState.circleProps.startAnglePerc}
-        rightval={ToolState.circleProps.endAnglePerc}
-        setleft={(v) => ToolState.setCircleProps("startAnglePerc", v)}
-        setright={(v) => ToolState.setCircleProps("endAnglePerc", v)}
       />
       <Color
         value={ToolState.circleProps.fillStyle}

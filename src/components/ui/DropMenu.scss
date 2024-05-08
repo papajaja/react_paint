@@ -4,7 +4,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  // background-color: rgba(0, 0, 0, 0.3);
   border-radius: 6px;
   color: white;
   font-size: 12px;
@@ -14,19 +13,27 @@
 }
 
 .dropdown_menu {
-  // height: $dropdown_height;
   height: 100%;
   font-size: 14px;
   padding: 0 $counter_padding 0 $counter_padding;
-  // background-color: red;
   display: flex;
   align-items: center;
   span {
     margin-left: auto;
   }
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      cursor: pointer;
+      // background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
@@ -36,7 +43,6 @@
 }
 
 .dropdown_text {
-  // background-color: blue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +58,6 @@
   font-size: 14px;
   color: gray;
   &.active {
-    // background-color: red;
     color: white;
   }
 }

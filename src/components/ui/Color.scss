@@ -53,9 +53,16 @@
   display: flex;
   align-items: center;
   color: $font_color;
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }
 

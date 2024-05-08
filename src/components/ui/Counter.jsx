@@ -62,12 +62,12 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
       clearInterval(fastInterval.current);
       clearInterval(veryFastInterval.current);
 
-      e.target.onmouseout = null;
-      e.target.onmouseup = null;
+      e.target.onpointerout = null;
+      e.target.onpointerup = null;
     };
 
-    e.target.onmouseout = clearActions;
-    e.target.onmouseup = clearActions;
+    e.target.onpointerout = clearActions;
+    e.target.onpointerup = clearActions;
   };
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
       <div className="counter_text">{text}</div>
       <div className="counter_controls">
         <button
-          onMouseDown={handleMouseDown}
+          onPointerDown={handleMouseDown}
           onClick={() => handleUpdate("decrease")}
           className="counter_decrease"
         >
@@ -87,7 +87,7 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
         </button>
         <div className="counter_value">{Math.round(count * 100) / 100}</div>
         <button
-          onMouseDown={handleMouseDown}
+          onPointerDown={handleMouseDown}
           onClick={() => handleUpdate("increase")}
           className="counter_increase"
         >

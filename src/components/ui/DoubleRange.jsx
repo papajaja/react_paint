@@ -28,7 +28,6 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
       if (leftShift > rightThumb_shift) leftShift = rightThumb_shift;
       if (leftShift < 0) leftShift = 0;
       if (leftShift > trackWidth) leftShift = trackWidth;
-      console.log("left", leftShift * onePx);
 
       setLeftPerc(onePx * leftShift);
       setleft(onePx * leftShift);
@@ -39,7 +38,6 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
       if (leftShift < 0) leftShift = 0;
 
       if (leftShift > trackWidth) leftShift = trackWidth;
-      console.log("right", leftShift * onePx);
 
       setRightPerc(onePx * leftShift);
       setright(onePx * leftShift);
@@ -51,16 +49,16 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
     rightThumb.current.classList.remove("thumb_active");
 
     document.body.style.cursor = "";
-    document.removeEventListener("mousemove", handleMove);
-    document.removeEventListener("mouseup", handleUp);
+    document.removeEventListener("pointermove", handleMove);
+    document.removeEventListener("pointerup", handleUp);
   };
 
   const handleDown = (e) => {
     e.target.classList.add("thumb_active");
 
     document.body.style.cursor = "pointer";
-    document.addEventListener("mousemove", handleMove);
-    document.addEventListener("mouseup", handleUp);
+    document.addEventListener("pointermove", handleMove);
+    document.addEventListener("pointerup", handleUp);
   };
 
   return (
@@ -72,13 +70,13 @@ const DoubleRange = ({ text, leftval, rightval, setleft, setright }) => {
             <div className="dr_track" />
             <div
               style={{ left: leftPerc + "%" }}
-              onMouseDown={handleDown}
+              onPointerDown={handleDown}
               ref={leftThumb}
               className="dr_left_thumb"
             ></div>
             <div
               style={{ left: rightPerc + "%" }}
-              onMouseDown={handleDown}
+              onPointerDown={handleDown}
               ref={rightThumb}
               className="dr_right_thumb"
             ></div>

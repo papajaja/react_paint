@@ -10,12 +10,34 @@ class Eraser extends Tool {
   }
 
   listen() {
-    const cnv = this.canvas;
     const cnvSh = CanvasState.canvasShell;
 
-    cnvSh.onmousedown = this.mouseDown.bind(this);
-    cnvSh.onmousemove = this.mouseMove.bind(this);
-    cnvSh.onmouseup = this.mouseUp.bind(this);
+    cnvSh.onpointerdown = this.mouseDown.bind(this);
+    cnvSh.onpointerup = this.mouseUp.bind(this);
+    cnvSh.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ) {
+      cnvSh.ontouchmove = this.mouseMove.bind(this);
+    } else {
+      cnvSh.onpointermove = this.mouseMove.bind(this);
+    }
+
+    // cnvSh.ontouchstart = this.mouseDown.bind(this);
+    // cnvSh.ontouchend = this.mouseUp.bind(this);
+  }
+
+  getPosition(event) {
+    const rect = this.canvas.getBoundingClientRect();
+    const touch = event.touches ? event.touches[0] : event;
+    // console.log("touch", touch);
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
+    };
   }
 
   setProps() {
@@ -34,8 +56,11 @@ class Eraser extends Tool {
 
   mouseDown(e) {
     this.isDown = true;
-    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+    // this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+    // this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+    const { x, y } = this.getPosition(e);
+    this.startX = x;
+    this.startY = y;
 
     this.setProps();
     const ctx = this.context;
@@ -45,8 +70,9 @@ class Eraser extends Tool {
 
   mouseUp(e) {
     if (!this.isDrawn) {
-      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      // const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      // const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      const { x, y } = this.getPosition(e);
       const ctx = this.context;
       ctx.beginPath();
       ctx.arc(x, y, ctx.lineWidth / 2, 0, 2 * Math.PI);
@@ -62,8 +88,9 @@ class Eraser extends Tool {
     if (this.isDown) {
       this.isDrawn = true;
       const ctx = this.context;
-      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      // const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      // const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      const { x, y } = this.getPosition(e);
 
       ctx.lineTo(x, y);
       ctx.stroke();

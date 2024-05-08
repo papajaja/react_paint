@@ -22,7 +22,7 @@ const App = () => {
     <div className="app">
       <section className="app_canvas">
         <div
-          onMouseDown={() => {
+          onPointerDown={() => {
             if (ToolState.tool) {
               CanvasState.pushUndo();
               CanvasState.cleanRedo();

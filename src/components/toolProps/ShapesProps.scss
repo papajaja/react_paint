@@ -24,16 +24,25 @@
   align-items: center;
   color: white;
   font-size: 13px;
-  // box-shadow: 0 0 1px 1px rgba(255, 0, 0, 0.3);
-  // background-color: rgba(255, 0, 0, 0.1);
+
   background-color: rgba(0, 0, 0, 0.4);
   color: rgba(255, 72, 0, 0.9);
   height: 24px;
   transition: transform 0.1s linear;
-  &:hover {
-    cursor: pointer;
-    color: red;
-    filter: brightness(200%);
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: red;
+      filter: brightness(200%);
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      cursor: pointer;
+      color: red;
+      filter: brightness(200%);
+    }
   }
 }
 
@@ -49,9 +58,17 @@
   font-size: 18px;
   color: white;
   transition: transform 0.2s linear;
-  &:hover {
-    cursor: pointer;
-    transform: rotateY(20deg) rotateX(20deg);
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      transform: rotateY(20deg) rotateX(20deg);
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      cursor: pointer;
+      transform: rotateY(20deg) rotateX(20deg);
+    }
   }
 }
 

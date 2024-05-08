@@ -18,15 +18,29 @@ class Brush extends Tool {
     const cnv = this.canvas;
     const cnvSh = CanvasState.canvasShell;
 
-    cnvSh.onmousedown = this.mouseDown.bind(this);
-    cnvSh.onmousemove = this.mouseMove.bind(this);
-    cnvSh.onmouseup = this.mouseUp.bind(this);
+    cnvSh.onpointerdown = this.mouseDown.bind(this);
+    cnvSh.onpointerup = this.mouseUp.bind(this);
+    cnvSh.oncontextmenu = (e) => {
+      e.preventDefault();
+    };
 
-    cnvSh.ontouchstart = this.mouseDown.bind(this);
-    cnvSh.ontouchmove = this.mouseMove.bind(this);
-    cnvSh.ontouchend = this.mouseUp.bind(this);
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ) {
+      cnvSh.ontouchmove = this.mouseMove.bind(this);
+    } else {
+      cnvSh.onpointermove = this.mouseMove.bind(this);
+    }
   }
 
+  getPosition(event) {
+    const rect = this.canvas.getBoundingClientRect();
+    const touch = event.touches ? event.touches[0] : event;
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top,
+    };
+  }
   setProps() {
     const ctx = this.context;
     const props = ToolState.brushProps;
@@ -39,11 +53,16 @@ class Brush extends Tool {
   }
 
   mouseDown(e) {
+    e.preventDefault();
     const ctx = this.context;
 
     this.isDown = true;
-    this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-    this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+    const { x, y } = this.getPosition(e);
+    // this.startX = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+    // this.startY = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+    this.startX = x;
+    this.startY = y;
+    // console.log("down", this.isDown);
 
     this.setProps();
 
@@ -53,10 +72,13 @@ class Brush extends Tool {
   }
 
   mouseUp(e) {
+    e.preventDefault();
+    // console.log("up", this.isDrawn);
     if (!this.isDrawn) {
       const ctx = this.context;
-      const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
-      const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
+      const { x, y } = this.getPosition(e);
+      // const x = e.clientX - this.canvas.offsetLeft + CanvasState.canvasShell.scrollLeft;
+      // const y = e.clientY - this.canvas.offsetTop + CanvasState.canvasShell.scrollTop;
       ctx.beginPath();
       ctx.arc(x, y, ctx.lineWidth / 2, 0, 2 * Math.PI);
       ctx.fillStyle = ctx.strokeStyle;
@@ -68,15 +90,19 @@ class Brush extends Tool {
   }
 
   mouseMove(e) {
-    if (this.isDown && e.buttons & 1) {
+    e.preventDefault();
+    if (this.isDown) {
+      // console.log("movving!");
+      // console.log("just move");
       this.isDrawn = true;
       const ctx = this.context;
       const props = ToolState.brushProps;
 
-      const x =
-        e.clientX - this.canvas.offsetLeft - window.scrollX + CanvasState.canvasShell.scrollLeft;
-      const y =
-        e.clientY - this.canvas.offsetTop - window.scrollY + CanvasState.canvasShell.scrollTop;
+      // const x =
+      //   e.clientX - this.canvas.offsetLeft - window.scrollX + CanvasState.canvasShell.scrollLeft;
+      // const y =
+      //   e.clientY - this.canvas.offsetTop - window.scrollY + CanvasState.canvasShell.scrollTop;
+      const { x, y } = this.getPosition(e);
 
       ctx.beginPath();
       ctx.moveTo(this.startX, this.startY);
