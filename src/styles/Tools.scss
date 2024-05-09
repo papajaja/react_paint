@@ -47,8 +47,21 @@
 }
 
 .tool {
-  width: 40px;
-  height: 40px;
+  @media (min-width: 1000px) {
+    width: calc(($toolbar_height + 20px) / 2);
+    height: calc(($toolbar_height + 20px) / 2);
+  }
+
+  @media (min-width: 768px) and (max-width: 1000px) {
+    width: calc($toolbar_height / 2);
+    height: calc($toolbar_height / 2);
+  }
+
+  @media (max-width: 768px) {
+    width: calc($toolbar_height / 2);
+    height: calc($toolbar_height / 2);
+  }
+
   background-size: $tool_size;
   background-repeat: no-repeat;
   background-position: center center;

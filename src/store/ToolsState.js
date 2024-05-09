@@ -4,7 +4,7 @@ class ToolState_c {
   tool = null;
 
   brushProps = JSON.parse(localStorage.getItem("brushProps")) || {
-    fillStyle: "#000000",
+    fillStyle: "#00FFFF",
     lineCap: "round",
     lineJoin: "round",
     lineWidth: 4,

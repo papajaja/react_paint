@@ -45,8 +45,8 @@ const SettingsProps = () => {
         min={0}
         max={20}
       />
-      <div className="warning">- Возможны лаги -</div>
-      <DropMenu name={"Composite G.O."} items={items} />
+      {/* <div className="warning">- !! -</div> */}
+      <DropMenu name={"Фильтры"} items={items} />
     </>
   );
 };

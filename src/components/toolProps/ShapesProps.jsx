@@ -43,11 +43,11 @@ const ShapesProps = observer(() => {
       />
       <Counter
         text={"Радиус"}
-        min={3}
+        min={0}
         max={999}
-        value={ToolState.shapes[currShape]?.radius}
+        value={ToolState.shapes[currShape].radius}
         setValue={(v) => ToolState.setShapesProps(currShape, "radius", v)}
-      />{" "}
+      />
       <Counter
         text={"Инсет"}
         min={0}
@@ -58,14 +58,12 @@ const ShapesProps = observer(() => {
       />
       <Counter
         text={"Смещение по X"}
-        min={3}
         max={999}
         value={ToolState.shapes[currShape]?.offsetX}
         setValue={(v) => ToolState.setShapesProps(currShape, "offsetX", v)}
       />
       <Counter
         text={"Смещение по Y"}
-        min={3}
         max={999}
         value={ToolState.shapes[currShape]?.offsetY}
         setValue={(v) => ToolState.setShapesProps(currShape, "offsetY", v)}

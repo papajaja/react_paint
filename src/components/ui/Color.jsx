@@ -10,9 +10,7 @@ const Color = ({ text, value, setValue }) => {
         <div className="color_text">{text}</div>
         <span style={{ rotate: isActive ? "90deg" : "0deg" }} className={"color_dir"} />
       </div>
-      {/* {isActive && ( */}
       <div
-        // hidden={isActive ? false : true}
         style={{
           height: isActive ? "150px" : "0px",
           padding: isActive ? "6px 10px 10px 10px" : "0 10px 0 10px",
@@ -21,7 +19,6 @@ const Color = ({ text, value, setValue }) => {
       >
         <HexAlphaColorPicker color={value} onChange={setValue} />
       </div>
-      {/* )} */}
     </div>
   );
 };

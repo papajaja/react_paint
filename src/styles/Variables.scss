@@ -1,6 +1,8 @@
 $settings_width: 250px;
 $settings_padding: 50px;
 $settings_height: calc(100vh - $settings_padding * 2);
+$settings_color: rgba(38, 54, 128, 0.732);
+
 $properties_gap: 10px;
 $font_size: 14px;
 $font_color: white;
@@ -8,6 +10,7 @@ $b-radius: 20px;
 $shadow_is: 0 0 20px -5px black;
 // $bg_is: lightgray;
 
+// toolbar variables
 $tool_size: 60%;
 $toolbar_width: $settings_width - $settings_padding;
 $toolbar_bg: rgb(63, 59, 58);

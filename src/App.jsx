@@ -16,6 +16,14 @@ const App = () => {
     const scrollTop =
       canvasRef.current.offsetTop - (window.innerHeight - canvasRef.current.height) / 2;
     canvasShellRef.current.scroll(scrollLeft, scrollTop);
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ) {
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
+    } else {
+      // cnvSh.onpointermove = this.mouseMove.bind(this);
+    }
   }, [canvasRef]);
 
   return (

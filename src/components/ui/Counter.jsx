@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) => {
   const [count, setCount] = useState(value);
+  const [isActive, setActive] = useState(false);
+
   const slowInterval = useRef();
   const slowTimeout = useRef();
 
@@ -12,17 +14,32 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
   const veryFastTimeout = useRef();
 
   const handleUpdate = (action) => {
-    if (action === "increase") {
-      setCount((count) => (count + step <= max ? count + step : count));
-      setValue(count + step <= max ? count + step : count);
-    } else {
-      setCount((count) => (count - step >= min ? count - step : count));
-      setValue(count - step >= min ? count - step : count);
-    }
+    let updatedCount = count;
+
+    setCount((prevCount) => {
+      if (action === "increase") {
+        updatedCount = prevCount + step <= max ? prevCount + step : prevCount;
+      } else {
+        updatedCount = prevCount - step >= min ? prevCount - step : prevCount;
+      }
+      return updatedCount;
+    });
+
+    // setValue(updatedCount);
+    // console.log(updatedCount);
   };
+
+  useEffect(() => {
+    setValue(count);
+  }, [count]);
+
+  useEffect(() => {
+    setCount(value);
+  }, [value]);
 
   const handleMouseDown = (e) => {
     slowTimeout.current = setTimeout(() => {
+      setActive(true);
       slowInterval.current = setInterval(() => {
         if (e.target.className === "counter_decrease") {
           handleUpdate("decrease");
@@ -55,6 +72,8 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
     }, 3500);
 
     const clearActions = (e) => {
+      setActive(false);
+
       clearTimeout(fastTimeout.current);
       clearTimeout(slowTimeout.current);
       clearTimeout(veryFastTimeout.current);
@@ -70,12 +89,21 @@ const Counter = ({ text, value = 100, setValue, min = 1, max = 999, step = 1 }) 
     e.target.onpointerup = clearActions;
   };
 
-  useEffect(() => {
-    setCount(value);
-  }, [value]);
+  // useEffect(() => {
+  //   setCount(value);
+  //   setValue(value);
+  // }, [value]);
 
   return (
     <div className="counter">
+      <div
+        style={{
+          display: isActive ? "flex" : "none",
+        }}
+        className="counter_display"
+      >
+        {Math.round(count * 100) / 100}
+      </div>
       <div className="counter_text">{text}</div>
       <div className="counter_controls">
         <button

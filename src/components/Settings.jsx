@@ -17,8 +17,11 @@ import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import SettingsTool from "../tools/Settings";
 import SettingsProps from "./toolProps/SettingsProps";
+import { useState } from "react";
 
 const Settings = () => {
+  const [isActive, setActive] = useState(true);
+
   if (ToolState.tool?.name === "settings") {
     document.body.style.cursor = "grab";
   } else {
@@ -100,7 +103,14 @@ const Settings = () => {
   ];
 
   return (
-    <section className="settings_block">
+    <section style={{ right: isActive ? 0 : "-200px" }} className="settings_block">
+      <div
+        onClick={() => setActive((i) => !i)}
+        className="selector color_dir"
+        style={{
+          transform: isActive ? "" : "rotate(180deg)",
+        }}
+      ></div>
       <div className="settings_toolbar">
         {tools.map((tool, i) => (
           <button

@@ -4,10 +4,37 @@
   width: 100%;
   height: $counter_height;
   display: flex;
+  position: relative;
   color: $font_color;
   padding: 0 $counter_padding 0 $counter_padding;
 }
 
+.counter_display {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  width: 40px;
+  border-radius: 3px;
+  height: 20px;
+  background-color: $settings_color;
+  opacity: 80%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 3px -1px white;
+  @media (min-width: 1000px) {
+    display: none !important;
+  }
+
+  @media (min-width: 768px) and (max-width: 1000px) {
+  }
+
+  @media (max-width: 768px) {
+  }
+}
 .counter_text {
   width: $counter_text_width;
   // background-color: red;
