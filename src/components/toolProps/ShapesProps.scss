@@ -7,13 +7,8 @@
   align-items: center;
   gap: $shapes_gap;
   padding: 0 $shapes_gap 0 $shapes_gap;
-  // background-color: red;
   perspective: 1000px;
 }
-
-// @keyframes rmshape {
-
-// }
 
 .remove_shape {
   width: calc(100% - 10px);

@@ -8,7 +8,7 @@ const LineProps = () => {
     <>
       <div className="toolname">Линия</div>
       <Checkbox
-        text={"Спам - режим"}
+        text={"Spam-mode"}
         value={ToolState.lineProps.isSpam}
         setValue={(v) => ToolState.setLineProps("isSpam", v)}
       />

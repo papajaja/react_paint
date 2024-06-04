@@ -8,7 +8,7 @@ const RectProps = () => {
     <>
       <div className="toolname">Квадрат</div>
       <Checkbox
-        text={"Спам - режим"}
+        text={"Spam-mode"}
         value={ToolState.rectProps.isSpam}
         setValue={(v) => ToolState.setRectProps("isSpam", v)}
       />

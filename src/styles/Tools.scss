@@ -47,26 +47,14 @@
 }
 
 .tool {
-  @media (min-width: 1000px) {
-    width: calc(($toolbar_height + 20px) / 2);
-    height: calc(($toolbar_height + 20px) / 2);
-  }
+  width: 50px;
+  height: 50px;
 
-  @media (min-width: 768px) and (max-width: 1000px) {
-    width: calc($toolbar_height / 2);
-    height: calc($toolbar_height / 2);
-  }
-
-  @media (max-width: 768px) {
-    width: calc($toolbar_height / 2);
-    height: calc($toolbar_height / 2);
-  }
-
-  background-size: $tool_size;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center center;
-  scale: 0.9;
-  border-radius: 8px;
+  scale: 0.8;
+
   @media (hover: hover) {
     &:hover {
       cursor: pointer;

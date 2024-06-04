@@ -123,7 +123,7 @@ const Settings = () => {
         ))}
       </div>
       <div className="settings_properties">
-        <SimpleBar style={{ height: "100%" }} className="bar">
+        <SimpleBar style={{ height: "100%" }}>
           {ToolState.tool?.name === "brush" ? <BrushProps /> : null}
           {ToolState.tool?.name === "circle" ? <CircleProps /> : null}
           {ToolState.tool?.name === "eraser" ? <EraserProps /> : null}
@@ -131,7 +131,6 @@ const Settings = () => {
           {ToolState.tool?.name === "rect" ? <RectProps /> : null}
           {ToolState.tool?.name === "shapes" ? <ShapesProps /> : null}
           {ToolState.tool?.name === "settings" ? <SettingsProps /> : null}
-          {!ToolState.tool?.name ? <div className="preview"></div> : null}
         </SimpleBar>
       </div>
     </section>

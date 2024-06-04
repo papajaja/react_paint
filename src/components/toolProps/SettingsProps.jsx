@@ -34,6 +34,14 @@ const SettingsProps = () => {
     },
   ];
 
+  const handleDownload = () => {
+    const canvas = CanvasState.canvas;
+    const link = document.createElement("a");
+    link.download = `image_${Date.now()}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
+  };
+
   return (
     <>
       <div className="toolname">Настройки</div>
@@ -47,6 +55,9 @@ const SettingsProps = () => {
       />
       {/* <div className="warning">- !! -</div> */}
       <DropMenu name={"Фильтры"} items={items} />
+      <button onClick={handleDownload} className="download">
+        Сохранить изображение
+      </button>
     </>
   );
 };

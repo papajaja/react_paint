@@ -30,7 +30,7 @@ class Shapes extends Tool {
     ) {
       cnvSh.ontouchmove = this.mouseMove.bind(this);
     } else {
-      cnvSh.onpointermove = this.mouseMove.bind(this);
+      cnvSh.onmousemove = this.mouseMove.bind(this);
     }
   }
 
